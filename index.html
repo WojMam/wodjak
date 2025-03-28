@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WODJAK Gaming - Official Links</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="hamburger-menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-items">
+                <ul>
+                    <li><a href="#" data-lang="home">Strona główna</a></li>
+                    <li><a href="#about" data-lang="about">O mnie</a></li>
+                    <li><a href="#links" data-lang="links">Linki</a></li>
+                    <li><a href="#future-plans" data-lang="plans">Plany</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="theme-controls">
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                <div class="theme-toggle-track">
+                    <span class="theme-icon"><i class="fas fa-moon"></i></span>
+                    <span class="theme-icon"><i class="fas fa-sun"></i></span>
+                </div>
+                <div class="theme-toggle-thumb"></div>
+            </div>
+            <div class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+                <div class="lang-toggle-track">
+                    <span class="lang-toggle-icon">PL</span>
+                    <span class="lang-toggle-icon">EN</span>
+                </div>
+                <div class="lang-toggle-thumb"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <img src="profile.jpg" alt="WODJAK Gaming" class="profile-image">
+            </div>
+            <h1 class="reveal-section">WODJAK</h1>
+            <p class="tagline reveal-section reveal-delay-1" data-lang="tagline">Poradniki i przewodniki do gier</p>
+        </header>
+
+        <section class="about reveal-section" id="about">
+            <h2 data-lang="about-title">O mnie</h2>
+            <p data-lang="about-p1">Witaj na mojej oficjalnej stronie! Tworzę szczegółowe poradniki i przewodniki do
+                gier, które pomogą Ci opanować Twoje ulubione tytuły. Od podstawowych wskazówek po zaawansowane
+                strategie, mój kanał ma wszystko, czego potrzebujesz, aby podnieść swoje umiejętności w grach.</p>
+            <p data-lang="about-p2">Subskrybuj, aby dołączyć do naszej rosnącej społeczności graczy!</p>
+        </section>
+
+        <section class="links reveal-section reveal-right" id="links">
+            <a href="https://www.youtube.com/@Wodjak" class="link-button youtube reveal-section reveal-delay-1"
+                target="_blank">
+                <span class="icon">▶️</span>
+                <span data-lang="youtube">Kanał YouTube</span>
+            </a>
+            <a href="https://www.twitch.tv/wodjak" class="link-button twitch reveal-section reveal-delay-1"
+                target="_blank">
+                <span class="icon">📺</span>
+                <span data-lang="twitch">Twitch</span>
+            </a>
+            <a href="https://www.tiktok.com/@wodjak.gaming" class="link-button tiktok reveal-section reveal-delay-2"
+                target="_blank">
+                <span class="icon">🎬</span>
+                <span data-lang="tiktok">TikTok</span>
+            </a>
+            <a href="https://www.instagram.com/wodjak_official/"
+                class="link-button instagram reveal-section reveal-delay-2" target="_blank">
+                <span class="icon">📷</span>
+                <span data-lang="instagram">Instagram</span>
+            </a>
+            <a href="mailto:wodjak.gaming@gmail.com" class="link-button email reveal-section reveal-delay-3">
+                <span class="icon">✉️</span>
+                <span data-lang="email">Email</span>
+            </a>
+            <div class="link-button discord reveal-section reveal-delay-3 disabled-link">
+                <span class="icon">💬</span>
+                <span data-lang="discord">Społeczność Discord - wkrótce</span>
+            </div>
+            <div class="link-button support reveal-section reveal-delay-3 disabled-link">
+                <span class="icon">❤️</span>
+                <span data-lang="support">Wesprzyj mnie - wkrótce</span>
+            </div>
+        </section>
+
+        <section class="future-plans reveal-section reveal-left" id="future-plans">
+            <h2 data-lang="future-title">Nadchodzące treści</h2>
+            <p data-lang="future-p">Aktualnie pracuję nad nowymi seriami poradników do najnowszych gier. Bądź na
+                bieżąco, aby nie przegapić szczegółowych przewodników, wskazówek i strategii, które wkrótce się pojawią!
+            </p>
+        </section>
+
+        <footer class="reveal-section">
+            <p>© <span id="current-year"></span> <span data-lang="copyright">WODJAK Gaming - Wszelkie prawa
+                    zastrzeżone</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
