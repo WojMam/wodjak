@@ -3,7 +3,6 @@ var translations = {
         home: "Home",
         about: "About Me",
         links: "Links",
-        plans: "Plans",
         tagline: "Gaming Tutorials & Guides",
         "about-title": "About Me",
         "about-p1": "Welcome to my official page! I create in-depth gaming tutorials and guides to help you master your favorite games. From beginner tips to advanced strategies, my channel has everything you need to level up your gaming skills.",
@@ -15,15 +14,12 @@ var translations = {
         instagram: "Instagram",
         email: "Contact Me",
         support: "Support me - coming soon",
-        "future-title": "Upcoming Content",
-        "future-p": "I'm currently working on new tutorial series for the latest game releases. Stay tuned for in-depth guides, tips & tricks, and gameplay strategies coming soon!",
         copyright: "WODJAK Gaming - All Rights Reserved",
     },
     pl: {
         home: "Strona główna",
         about: "O mnie",
         links: "Linki",
-        plans: "Plany",
         tagline: "Poradniki i przewodniki do gier",
         "about-title": "O mnie",
         "about-p1": "Witaj na mojej oficjalnej stronie! Tworzę szczegółowe poradniki i przewodniki do gier, które pomogą Ci opanować Twoje ulubione tytuły. Od podstawowych wskazówek po zaawansowane strategie, mój kanał ma wszystko, czego potrzebujesz, aby podnieść swoje umiejętności w grach.",
@@ -35,8 +31,6 @@ var translations = {
         instagram: "Instagram",
         email: "Napisz do mnie",
         support: "Wesprzyj mnie - wkrótce",
-        "future-title": "Nadchodzące treści",
-        "future-p": "Aktualnie pracuję nad nowymi seriami poradników do najnowszych gier. Bądź na bieżąco, aby nie przegapić szczegółowych przewodników, wskazówek i strategii, które wkrótce się pojawią!",
         copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
     },
 };
@@ -147,6 +141,11 @@ function setupNavbarScroll() {
     var navbar = document.querySelector(".navbar");
     var lastScrollY = window.scrollY;
     window.addEventListener("scroll", function () {
+        // Don't hide navbar on mobile devices
+        if (window.innerWidth <= 600) {
+            navbar === null || navbar === void 0 ? void 0 : navbar.classList.remove("hidden");
+            return;
+        }
         if (lastScrollY < window.scrollY) {
             // Scrolling down
             navbar === null || navbar === void 0 ? void 0 : navbar.classList.add("hidden");
@@ -156,6 +155,12 @@ function setupNavbarScroll() {
             navbar === null || navbar === void 0 ? void 0 : navbar.classList.remove("hidden");
         }
         lastScrollY = window.scrollY;
+    });
+    // Also check on resize to handle orientation changes
+    window.addEventListener("resize", function () {
+        if (window.innerWidth <= 600) {
+            navbar === null || navbar === void 0 ? void 0 : navbar.classList.remove("hidden");
+        }
     });
 }
 // Setup scroll reveal animations using Intersection Observer

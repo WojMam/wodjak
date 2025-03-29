@@ -176,6 +176,12 @@ function setupNavbarScroll() {
 	let lastScrollY = window.scrollY;
 
 	window.addEventListener("scroll", () => {
+		// Don't hide navbar on mobile devices
+		if (window.innerWidth <= 600) {
+			navbar?.classList.remove("hidden");
+			return;
+		}
+
 		if (lastScrollY < window.scrollY) {
 			// Scrolling down
 			navbar?.classList.add("hidden");
@@ -185,6 +191,13 @@ function setupNavbarScroll() {
 		}
 
 		lastScrollY = window.scrollY;
+	});
+
+	// Also check on resize to handle orientation changes
+	window.addEventListener("resize", () => {
+		if (window.innerWidth <= 600) {
+			navbar?.classList.remove("hidden");
+		}
 	});
 }
 

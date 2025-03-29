@@ -396,6 +396,12 @@ footer {
 
 	.navbar {
 		padding: 0 1rem;
+		position: sticky; /* Always visible on mobile */
+	}
+
+	/* Prevent navbar from hiding on mobile */
+	.navbar.hidden {
+		transform: translateY(0);
 	}
 
 	.menu-items {
