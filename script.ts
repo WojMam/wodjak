@@ -10,7 +10,6 @@ const translations: Translations = {
 		home: "Home",
 		about: "About Me",
 		links: "Links",
-		plans: "Plans",
 		tagline: "Gaming Tutorials & Guides",
 		"about-title": "About Me",
 		"about-p1":
@@ -23,16 +22,12 @@ const translations: Translations = {
 		instagram: "Instagram",
 		email: "Contact Me",
 		support: "Support me - coming soon",
-		"future-title": "Upcoming Content",
-		"future-p":
-			"I'm currently working on new tutorial series for the latest game releases. Stay tuned for in-depth guides, tips & tricks, and gameplay strategies coming soon!",
 		copyright: "WODJAK Gaming - All Rights Reserved",
 	},
 	pl: {
 		home: "Strona główna",
 		about: "O mnie",
 		links: "Linki",
-		plans: "Plany",
 		tagline: "Poradniki i przewodniki do gier",
 		"about-title": "O mnie",
 		"about-p1":
@@ -46,9 +41,6 @@ const translations: Translations = {
 		instagram: "Instagram",
 		email: "Napisz do mnie",
 		support: "Wesprzyj mnie - wkrótce",
-		"future-title": "Nadchodzące treści",
-		"future-p":
-			"Aktualnie pracuję nad nowymi seriami poradników do najnowszych gier. Bądź na bieżąco, aby nie przegapić szczegółowych przewodników, wskazówek i strategii, które wkrótce się pojawią!",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
 };
