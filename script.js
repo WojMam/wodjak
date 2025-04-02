@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	if (profileFlip && profileBack && profileFront) {
+		// Set a random image to back side initially
+		profileBack.src = getRandomProfile(profileFront.src);
+
 		profileFlip.addEventListener("click", function () {
 			profileFlip.classList.toggle("flip");
 			isFlipped = !isFlipped;
