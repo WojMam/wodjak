@@ -67,6 +67,59 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// Setup profile flip animation with random images
+	const profileFlip = document.getElementById("profile-flip");
+	const profileBack = document.querySelector(
+		".profile-back img"
+	) as HTMLImageElement;
+	const profileFront = document.querySelector(
+		".profile-front img"
+	) as HTMLImageElement;
+	let isFlipped = false;
+
+	// List of available profile images
+	const profileImages = [
+		"images/profiles/profile_main.jpg",
+		"images/profiles/profile_ac.png",
+		"images/profiles/profile_cp.png",
+		"images/profiles/profile_kn.png",
+		"images/profiles/profile_sk.png",
+		"images/profiles/profile_st.png",
+		"images/profiles/profile_ft.png",
+		"images/profiles/profile_fa.png",
+		"images/profiles/profile_gh.png",
+		"images/profiles/profile_ww.png",
+	];
+
+	// Function to get a random profile image that's different from the current one
+	const getRandomProfile = (currentSrc: string): string => {
+		const currentImage = currentSrc.split("/").pop();
+		const availableImages = profileImages.filter(img => {
+			return img.split("/").pop() !== currentImage;
+		});
+
+		const randomIndex = Math.floor(Math.random() * availableImages.length);
+		return availableImages[randomIndex];
+	};
+
+	if (profileFlip && profileBack && profileFront) {
+		profileFlip.addEventListener("click", () => {
+			profileFlip.classList.toggle("flip");
+			isFlipped = !isFlipped;
+
+			// After the flip animation starts, set up the next image for the side that will be hidden
+			setTimeout(() => {
+				if (isFlipped) {
+					// If flipped to back, prepare a new random image for the front
+					profileFront.src = getRandomProfile(profileBack.src);
+				} else {
+					// If flipped to front, prepare a new random image for the back
+					profileBack.src = getRandomProfile(profileFront.src);
+				}
+			}, 400); // Wait for the flip to be halfway through
+		});
+	}
+
 	// Set default language
 	setActiveLanguage(currentLang);
 
