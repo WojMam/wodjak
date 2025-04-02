@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					// If flipped to back, prepare a new random image for the front
 					profileFront.src = getRandomProfile(profileBack.src);
 				} else {
-					// If flipped to front, prepare a new random image for the back
+					// If flipped to back, prepare a new random image for the back
 					profileBack.src = getRandomProfile(profileFront.src);
 				}
 			}, 400); // Wait for the flip to be halfway through
