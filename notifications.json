@@ -1,0 +1,158 @@
+{
+	"config": {
+		"defaultDuration": 10000,
+		"maxNotifications": 3,
+		"position": "top-right",
+		"autoHide": true,
+		"autoClose": true
+	},
+	"notifications": [
+		{
+			"id": "welcome",
+			"type": "info",
+			"platform": "general",
+			"title": "Witaj na oficjalnej stronie WODJAK Gaming!",
+			"message": "",
+			"link": "",
+			"icon": "images/icons/icon_support_32.png",
+			"duration": 7000,
+			"showDelay": 1500,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Witaj na oficjalnej stronie WODJAK Gaming!"
+				},
+				"en": {
+					"title": "Welcome to the official WODJAK Gaming website!"
+				}
+			}
+		},
+		{
+			"id": "new-video-1",
+			"type": "youtube",
+			"platform": "youtube",
+			"title": "Najnowsze sekrety w grze Starfield",
+			"message": "",
+			"link": "https://www.youtube.com/@Wodjak",
+			"icon": "images/icons/icon_youtube_32.png",
+			"duration": 12000,
+			"showDelay": 3000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Najnowsze sekrety w grze Starfield"
+				},
+				"en": {
+					"title": "Latest secrets in Starfield"
+				}
+			}
+		},
+		{
+			"id": "new-stream-1",
+			"type": "twitch",
+			"platform": "twitch",
+			"title": "Wieczorny stream z Warhammer 40k",
+			"message": "",
+			"link": "https://www.twitch.tv/wodjak",
+			"icon": "images/icons/icon_twitch_32.png",
+			"duration": 10000,
+			"showDelay": 5000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Wieczorny stream z Warhammer 40k"
+				},
+				"en": {
+					"title": "Evening stream with Warhammer 40k"
+				}
+			}
+		},
+		{
+			"id": "new-tiktok-1",
+			"type": "tiktok",
+			"platform": "tiktok",
+			"title": "Szybki poradnik: jak pokonać trudnego bossa",
+			"message": "",
+			"link": "https://www.tiktok.com/@wodjak.gaming",
+			"icon": "images/icons/icon_tiktok_32.png",
+			"duration": 8000,
+			"showDelay": 7000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Szybki poradnik: jak pokonać trudnego bossa"
+				},
+				"en": {
+					"title": "Quick guide: how to defeat a tough boss"
+				}
+			}
+		},
+		{
+			"id": "upcoming-stream",
+			"type": "twitch",
+			"platform": "twitch",
+			"title": "Zaplanowane wydarzenie: stream z Cyberpunk 2077 (11.04.2025, 20:00)",
+			"message": "Nie przegap naszego nadchodzącego streamu!",
+			"link": "https://www.twitch.tv/wodjak",
+			"icon": "images/icons/icon_twitch_32.png",
+			"duration": 15000,
+			"showDelay": 9000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Zaplanowane wydarzenie: stream z Cyberpunk 2077 (11.04.2025, 20:00)",
+					"message": "Nie przegap naszego nadchodzącego streamu!"
+				},
+				"en": {
+					"title": "Scheduled event: Cyberpunk 2077 stream (11.04.2025, 8:00 PM)",
+					"message": "Don't miss our upcoming stream!"
+				}
+			}
+		},
+		{
+			"id": "discord-announcement",
+			"type": "discord",
+			"platform": "discord",
+			"title": "Już wkrótce otworzymy nasz serwer Discord!",
+			"message": "Zostań na bieżąco z informacjami.",
+			"link": "",
+			"icon": "images/icons/icon_discord_32.png",
+			"duration": 10000,
+			"showDelay": 11000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "Już wkrótce otworzymy nasz serwer Discord!",
+					"message": "Zostań na bieżąco z informacjami."
+				},
+				"en": {
+					"title": "We're launching our Discord server soon!",
+					"message": "Stay tuned for updates."
+				}
+			}
+		},
+		{
+			"id": "persistent-announcement",
+			"type": "warning",
+			"platform": "general",
+			"title": "Ważne ogłoszenie!",
+			"message": "To powiadomienie nie zniknie automatycznie i musi być zamknięte ręcznie.",
+			"link": "",
+			"icon": "images/icons/icon_support_32.png",
+			"duration": 0,
+			"showDelay": 13000,
+			"active": true,
+			"autoClose": false,
+			"translations": {
+				"pl": {
+					"title": "Ważne ogłoszenie!",
+					"message": "To powiadomienie nie zniknie automatycznie i musi być zamknięte ręcznie."
+				},
+				"en": {
+					"title": "Important announcement!",
+					"message": "This notification won't disappear automatically and must be closed manually."
+				}
+			}
+		}
+	]
+}

@@ -1,27 +1,12 @@
+// Importy
+import NotificationSystem from "./notifications.js";
+
+// Tłumaczenia
 var translations = {
-	en: {
-		home: "Home",
-		about: "About Me",
-		links: "Links",
-		tagline: "Gaming Tutorials & Guides",
-		"about-title": "About Me",
-		"about-p1":
-			"Welcome to my official page! I create in-depth gaming tutorials and guides to help you master your favorite games. From beginner tips to advanced strategies, my channel has everything you need to level up your gaming skills.",
-		"about-p2": "Subscribe to join our growing community of gamers!",
-		youtube: "YouTube Channel",
-		twitch: "Twitch",
-		discord: "Discord Community - coming soon",
-		tiktok: "TikTok",
-		instagram: "Instagram",
-		email: "Contact Me",
-		support: "Support me - coming soon",
-		copyright: "WODJAK Gaming - All Rights Reserved",
-	},
 	pl: {
 		home: "Strona główna",
 		about: "O mnie",
 		links: "Linki",
-		tagline: "Poradniki i przewodniki do gier",
 		"about-title": "O mnie",
 		"about-p1":
 			"Witaj na mojej oficjalnej stronie! Tworzę szczegółowe poradniki i przewodniki do gier, które pomogą Ci opanować Twoje ulubione tytuły. Od podstawowych wskazówek po zaawansowane strategie, mój kanał ma wszystko, czego potrzebujesz, aby podnieść swoje umiejętności w grach.",
@@ -29,14 +14,34 @@ var translations = {
 			"Subskrybuj, aby dołączyć do naszej rosnącej społeczności graczy!",
 		youtube: "Kanał YouTube",
 		twitch: "Twitch",
-		discord: "Społeczność Discord - wkrótce",
 		tiktok: "TikTok",
 		instagram: "Instagram",
-		email: "Napisz do mnie",
+		discord: "Społeczność Discord - wkrótce",
+		email: "Email",
 		support: "Wesprzyj mnie - wkrótce",
+		tagline: "Poradniki i przewodniki do gier",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
+	en: {
+		home: "Home",
+		about: "About",
+		links: "Links",
+		"about-title": "About Me",
+		"about-p1":
+			"Welcome to my official site! I create detailed game tutorials and guides to help you master your favorite titles. From basic tips to advanced strategies, my channel has everything you need to level up your gaming skills.",
+		"about-p2": "Subscribe to join our growing community of gamers!",
+		youtube: "YouTube Channel",
+		twitch: "Twitch",
+		tiktok: "TikTok",
+		instagram: "Instagram",
+		discord: "Discord Community - coming soon",
+		email: "Email",
+		support: "Support Me - coming soon",
+		tagline: "Game tutorials and guides",
+		copyright: "WODJAK Gaming - All rights reserved",
+	},
 };
+
 // Current language
 var currentLang = "pl";
 // Set current year in footer
@@ -45,6 +50,20 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (yearElement) {
 		yearElement.textContent = new Date().getFullYear().toString();
 	}
+
+	// Inicjalizacja systemu powiadomień
+	const notifications = new NotificationSystem({
+		autoLoad: true, // Automatycznie załaduj powiadomienia z pliku notifications.json
+	});
+
+	// Obsługa przycisku powiadomień
+	setupNotificationsButton(notifications);
+
+	// Wysyłanie zdarzenia zmiany języka
+	document.addEventListener("languageChanged", function (e) {
+		// Tu dodaj obsługę innych elementów, które reagują na zmianę języka
+	});
+
 	// Add hover effect to links
 	var linkButtons = document.querySelectorAll(".link-button");
 	linkButtons.forEach(function (button) {
@@ -322,4 +341,27 @@ function setupThemeToggle() {
 			? void 0
 			: themeToggle.setAttribute("aria-checked", isLightTheme.toString());
 	}
+}
+
+// Obsługa przycisku powiadomień
+function setupNotificationsButton(notifications) {
+	const notificationsButton = document.getElementById('notifications-toggle');
+	const notificationsBadge = document.querySelector('.notifications-badge');
+	
+	if (!notificationsButton) return;
+	
+	// Aktualizuj licznik powiadomień przy inicjalizacji i po zamknięciu powiadomienia
+	setTimeout(() => {
+		notifications.updateNotificationsBadge();
+	}, 1000);
+	
+	// Nasłuchuj zdarzeń zamknięcia powiadomień
+	document.addEventListener('notificationClosed', function() {
+		notifications.updateNotificationsBadge();
+	});
+	
+	// Nasłuchuj zdarzeń oznaczenia wszystkich powiadomień jako przeczytane
+	document.addEventListener('notificationsAllClosed', function() {
+		notifications.updateNotificationsBadge();
+	});
 }
