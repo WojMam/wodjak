@@ -1,5 +1,6 @@
 // Importy
-import NotificationSystem from "./notifications.js";
+import { loadThemeState, setupTheme } from "./theme.js";
+import NotificationSystem from "./notifications/notifications.js";
 
 // Tłumaczenia
 var translations = {
@@ -345,23 +346,23 @@ function setupThemeToggle() {
 
 // Obsługa przycisku powiadomień
 function setupNotificationsButton(notifications) {
-	const notificationsButton = document.getElementById('notifications-toggle');
-	const notificationsBadge = document.querySelector('.notifications-badge');
-	
+	const notificationsButton = document.getElementById("notifications-toggle");
+	const notificationsBadge = document.querySelector(".notifications-badge");
+
 	if (!notificationsButton) return;
-	
+
 	// Aktualizuj licznik powiadomień przy inicjalizacji i po zamknięciu powiadomienia
 	setTimeout(() => {
 		notifications.updateNotificationsBadge();
 	}, 1000);
-	
+
 	// Nasłuchuj zdarzeń zamknięcia powiadomień
-	document.addEventListener('notificationClosed', function() {
+	document.addEventListener("notificationClosed", function () {
 		notifications.updateNotificationsBadge();
 	});
-	
+
 	// Nasłuchuj zdarzeń oznaczenia wszystkich powiadomień jako przeczytane
-	document.addEventListener('notificationsAllClosed', function() {
+	document.addEventListener("notificationsAllClosed", function () {
 		notifications.updateNotificationsBadge();
 	});
 }

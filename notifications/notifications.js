@@ -99,7 +99,7 @@ class NotificationSystem {
 	 */
 	async loadNotificationsFromJson() {
 		try {
-			const response = await fetch("notifications.json");
+			const response = await fetch("notifications/notifications.json");
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}

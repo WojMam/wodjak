@@ -12,12 +12,16 @@
 }
 
 .notification-container.top-right {
-	top: calc(var(--navbar-height) + 10px); /* Przesunięcie niżej o wysokość paska nawigacyjnego */
+	top: calc(
+		var(--navbar-height) + 10px
+	); /* Przesunięcie niżej o wysokość paska nawigacyjnego */
 	right: 10px;
 }
 
 .notification-container.top-left {
-	top: calc(var(--navbar-height) + 10px); /* Przesunięcie niżej o wysokość paska nawigacyjnego */
+	top: calc(
+		var(--navbar-height) + 10px
+	); /* Przesunięcie niżej o wysokość paska nawigacyjnego */
 	left: 10px;
 }
 
@@ -217,7 +221,9 @@
 	top: calc(var(--navbar-height) + 15px); /* Przesunięcie niżej o 15px */
 	width: 380px;
 	max-width: calc(100vw - 20px);
-	max-height: calc(100vh - var(--navbar-height) - 40px); /* Zmniejszyłem nieco, żeby zawsze było miejsce na dolny margines */
+	max-height: calc(
+		100vh - var(--navbar-height) - 40px
+	); /* Zmniejszyłem nieco, żeby zawsze było miejsce na dolny margines */
 	background-color: var(--card-background);
 	border-radius: 12px;
 	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -285,7 +291,9 @@
 .notifications-panel-content {
 	padding: 10px;
 	overflow-y: auto; /* Zapewnia przewijanie w pionie */
-	max-height: calc(100vh - var(--navbar-height) - 120px); /* Uwzględnia wysokość nagłówka panelu */
+	max-height: calc(
+		100vh - var(--navbar-height) - 120px
+	); /* Uwzględnia wysokość nagłówka panelu */
 	flex-grow: 1; /* Pozwala zawartości zajmować dostępną przestrzeń */
 	scrollbar-width: thin; /* Cieńszy pasek przewijania w Firefox */
 	scrollbar-color: rgba(255, 255, 255, 0.3) transparent; /* Kolor paska przewijania w Firefox */
@@ -331,14 +339,18 @@
 }
 
 .notifications-panel-item::before {
-	content: '';
+	content: "";
 	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 0%;
 	height: 100%;
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.1) 100%
+	);
 	transition: width 0.3s ease;
 	z-index: 0;
 	pointer-events: none;
@@ -357,7 +369,7 @@
 }
 
 .notifications-panel-item.unread::after {
-	content: '';
+	content: "";
 	display: block;
 	width: 8px;
 	height: 8px;
@@ -471,7 +483,7 @@
 }
 
 .notifications-toggle.new-notification::after {
-	content: '';
+	content: "";
 	display: block;
 	width: 8px;
 	height: 8px;
