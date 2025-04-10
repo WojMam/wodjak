@@ -1,5 +1,4 @@
 // Importy
-import { loadThemeState, setupTheme } from "./theme.js";
 import NotificationSystem from "./notifications/notifications.js";
 
 // Tłumaczenia
