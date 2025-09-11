@@ -8,7 +8,7 @@
 	},
 	"notifications": [
 		{
-			"id": "welcome",
+			"id": "1",
 			"type": "info",
 			"platform": "general",
 			"title": "Witaj na oficjalnej stronie WODJAK Gaming!",
@@ -17,7 +17,7 @@
 			"icon": "images/icons/icon_support_32.png",
 			"duration": 7000,
 			"showDelay": 1500,
-			"active": false,
+			"active": true,
 			"translations": {
 				"pl": {
 					"title": "Witaj na oficjalnej stronie WODJAK Gaming!"
@@ -28,7 +28,7 @@
 			}
 		},
 		{
-			"id": "new-video-1",
+			"id": "2",
 			"type": "youtube",
 			"platform": "youtube",
 			"title": "Najnowsze sekrety w grze Starfield",
@@ -48,7 +48,7 @@
 			}
 		},
 		{
-			"id": "new-video-2",
+			"id": "3",
 			"type": "youtube",
 			"platform": "youtube",
 			"title": "Najnowsze sekrety w grze Starfield",
@@ -68,7 +68,7 @@
 			}
 		},
 		{
-			"id": "new-stream-1",
+			"id": "4",
 			"type": "twitch",
 			"platform": "twitch",
 			"title": "Sprawdź ostatnie streamy na Twitch",
@@ -77,7 +77,7 @@
 			"icon": "images/icons/icon_twitch_32.png",
 			"duration": 10000,
 			"showDelay": 5000,
-			"active": false,
+			"active": true,
 			"translations": {
 				"pl": {
 					"title": "Kingdom Come: Deliverance 2 - Legacy of the Forge"
@@ -88,7 +88,7 @@
 			}
 		},
 		{
-			"id": "discord-announcement",
+			"id": "5",
 			"type": "discord",
 			"platform": "discord",
 			"title": "Serwer Discord już otwarty!",
