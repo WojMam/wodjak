@@ -48,7 +48,7 @@
 			}
 		},
 		{
-			"id": "new-video-1",
+			"id": "new-video-2",
 			"type": "youtube",
 			"platform": "youtube",
 			"title": "Najnowsze sekrety w grze Starfield",
@@ -97,7 +97,7 @@
 			"icon": "images/icons/icon_discord_32.png",
 			"duration": 10000,
 			"showDelay": 11000,
-			"active": false,
+			"active": true,
 			"autoClose": false,
 			"translations": {
 				"pl": {

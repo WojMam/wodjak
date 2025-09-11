@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Notifications - WODJAK Gaming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .warning {
+            background: #ff6b6b;
+        }
+        .warning:hover {
+            background: #ff5252;
+        }
+        .info {
+            background: #2196F3;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Clear Notifications History</h1>
+        <p>Ta strona pomoże Ci wyczyścić historię powiadomień.</p>
+        
+        <div class="info">
+            <h3>Problem:</h3>
+            <p>Jeśli nowe powiadomienia się nie pokazują, to prawdopodobnie dlatego, że:</p>
+            <ul style="text-align: left;">
+                <li>Miałeś duplikaty ID w pliku JSON</li>
+                <li>Powiadomienia zostały już oznaczone jako przeczytane</li>
+                <li>localStorage przechowuje historię przeczytanych powiadomień</li>
+            </ul>
+        </div>
+
+        <h3>Rozwiązania:</h3>
+        
+        <button onclick="clearReadNotifications()">Wyczyść przeczytane powiadomienia</button>
+        <button onclick="clearDeletedNotifications()">Wyczyść usunięte powiadomienia</button>
+        <button class="warning" onclick="clearAllNotifications()">Wyczyść WSZYSTKO</button>
+        
+        <div id="result" style="margin-top: 20px; padding: 10px; border-radius: 5px; display: none;"></div>
+        
+        <div style="margin-top: 30px;">
+            <p><strong>Lub uruchom w konsoli przeglądarki:</strong></p>
+            <code style="background: #333; padding: 10px; display: block; border-radius: 5px;">
+                localStorage.removeItem('readNotifications');<br>
+                localStorage.removeItem('deletedNotifications');<br>
+                location.reload();
+            </code>
+        </div>
+    </div>
+
+    <script>
+        function showResult(message, isError = false) {
+            const result = document.getElementById('result');
+            result.textContent = message;
+            result.style.display = 'block';
+            result.style.background = isError ? '#ff6b6b' : '#4CAF50';
+        }
+
+        function clearReadNotifications() {
+            try {
+                localStorage.removeItem('readNotifications');
+                showResult('✅ Przeczytane powiadomienia zostały wyczyszczone!');
+            } catch (error) {
+                showResult('❌ Błąd: ' + error.message, true);
+            }
+        }
+
+        function clearDeletedNotifications() {
+            try {
+                localStorage.removeItem('deletedNotifications');
+                showResult('✅ Usunięte powiadomienia zostały wyczyszczone!');
+            } catch (error) {
+                showResult('❌ Błąd: ' + error.message, true);
+            }
+        }
+
+        function clearAllNotifications() {
+            if (confirm('Czy na pewno chcesz wyczyścić WSZYSTKĄ historię powiadomień?')) {
+                try {
+                    localStorage.removeItem('readNotifications');
+                    localStorage.removeItem('deletedNotifications');
+                    showResult('✅ Cała historia powiadomień została wyczyszczona!');
+                } catch (error) {
+                    showResult('❌ Błąd: ' + error.message, true);
+                }
+            }
+        }
+
+        // Pokaż aktualny stan localStorage
+        window.onload = function() {
+            const readNotifications = localStorage.getItem('readNotifications');
+            const deletedNotifications = localStorage.getItem('deletedNotifications');
+            
+            console.log('Przeczytane powiadomienia:', readNotifications);
+            console.log('Usunięte powiadomienia:', deletedNotifications);
+        };
+    </script>
+</body>
+</html>
