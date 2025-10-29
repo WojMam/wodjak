@@ -28,46 +28,6 @@
 			}
 		},
 		{
-			"id": "2",
-			"type": "youtube",
-			"platform": "youtube",
-			"title": "Najnowsze sekrety w grze Starfield",
-			"message": "",
-			"link": "https://www.youtube.com/watch?v=L61lfhbWos4",
-			"icon": "images/icons/icon_youtube_32.png",
-			"duration": 12000,
-			"showDelay": 3000,
-			"active": true,
-			"translations": {
-				"pl": {
-					"title": "LEGACY OF THE FORGE | WSZYSTKO CO MUSISZ WIEDZIEĆ PRZED PREMIERĄ!"
-				},
-				"en": {
-					"title": "LEGACY OF THE FORGE | EVERYTHING YOU NEED TO KNOW BEFORE THE PREMIERE!"
-				}
-			}
-		},
-		{
-			"id": "3",
-			"type": "youtube",
-			"platform": "youtube",
-			"title": "Najnowsze sekrety w grze Starfield",
-			"message": "",
-			"link": "https://www.youtube.com/watch?v=L61lfhbWos4",
-			"icon": "images/icons/icon_youtube_32.png",
-			"duration": 12000,
-			"showDelay": 3000,
-			"active": true,
-			"translations": {
-				"pl": {
-					"title": "GOTHIC REMAKE - GAMEPLAY Z GAMESCOM! | COMMENTARY | REAKCJA | CZY POKAZALI COŚ NOWEGO?"
-				},
-				"en": {
-					"title": "GOTHIC REMAKE - GAMEPLAY FROM GAMESCOM! | COMMENTARY | REACTION | DID THEY SHOW SOMETHING NEW?"
-				}
-			}
-		},
-		{
 			"id": "4",
 			"type": "twitch",
 			"platform": "twitch",
@@ -107,6 +67,26 @@
 				"en": {
 					"title": "Discord server is already open!",
 					"message": "Join our community!"
+				}
+			}
+		},
+		{
+			"id": "6",
+			"type": "youtube",
+			"platform": "youtube",
+			"title": "KONIEC NEW WORLD",
+			"message": "",
+			"link": "https://www.youtube.com/watch?v=Iv12ariVd4w",
+			"icon": "images/icons/icon_youtube_32.png",
+			"duration": 12000,
+			"showDelay": 3000,
+			"active": true,
+			"translations": {
+				"pl": {
+					"title": "KONIEC NEW WORLD. Dlaczego Amazon wyciągnął wtyczkę?"
+				},
+				"en": {
+					"title": "END OF NEW WORLD. WHY AMAZON PULLED THE PLUG?"
 				}
 			}
 		}
