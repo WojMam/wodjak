@@ -555,7 +555,33 @@ p {
 	background: linear-gradient(
 		90deg,
 		rgba(0, 0, 0, 0) 0%,
-		rgba(255, 66, 77, 0.3) 100%
+		rgba(255, 215, 0, 0.3) 100%
+	);
+	opacity: 1;
+}
+
+.facebook:hover {
+	background-color: var(--secondary-color);
+}
+
+.facebook:hover::before {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(24, 119, 242, 0.3) 100%
+	);
+	opacity: 1;
+}
+
+.pixele:hover {
+	background-color: var(--secondary-color);
+}
+
+.pixele:hover::before {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(255, 140, 0, 0.3) 100%
 	);
 	opacity: 1;
 }
@@ -599,7 +625,9 @@ p {
 }
 
 .disabled-link.support:hover::before,
-.disabled-link.tipply:hover::before {
+.disabled-link.tipply:hover::before,
+.disabled-link.facebook:hover::before,
+.disabled-link.pixele:hover::before {
 	background: linear-gradient(
 		90deg,
 		rgba(0, 0, 0, 0) 0%,
@@ -889,7 +917,9 @@ footer {
 .light-theme .instagram:hover,
 .light-theme .email:hover,
 .light-theme .support:hover,
-.light-theme .tipply:hover {
+.light-theme .tipply:hover,
+.light-theme .facebook:hover,
+.light-theme .pixele:hover {
 	color: #fff;
 }
 
@@ -935,7 +965,15 @@ footer {
 }
 
 .tipply:hover .pixel-icon {
-	filter: drop-shadow(0 0 4px rgba(255, 66, 77, 0.5));
+	filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5));
+}
+
+.facebook:hover .pixel-icon {
+	filter: drop-shadow(0 0 4px rgba(24, 119, 242, 0.5));
+}
+
+.pixele:hover .pixel-icon {
+	filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.5));
 }
 
 .light-theme .link-button::before {
@@ -1006,7 +1044,25 @@ footer {
 	background: linear-gradient(
 		90deg,
 		rgba(0, 0, 0, 0) 0%,
-		rgba(255, 66, 77, 0.5) 100%
+		rgba(255, 215, 0, 0.5) 100%
+	);
+	opacity: 1;
+}
+
+.light-theme .facebook:hover::before {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(24, 119, 242, 0.5) 100%
+	);
+	opacity: 1;
+}
+
+.light-theme .pixele:hover::before {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(255, 140, 0, 0.5) 100%
 	);
 	opacity: 1;
 }
@@ -1104,32 +1160,40 @@ footer {
 	transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
 }
 
-.reveal-section .twitch {
+.reveal-section .support {
 	transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
 }
 
-.reveal-section .tiktok {
+.reveal-section .twitch {
 	transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
 }
 
-.reveal-section .instagram {
+.reveal-section .facebook {
 	transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
 }
 
-.reveal-section .email {
+.reveal-section .pixele {
 	transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
 }
 
-.reveal-section .discord {
+.reveal-section .tiktok {
 	transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
 }
 
-.reveal-section .support {
+.reveal-section .instagram {
 	transition: opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s;
 }
 
-.reveal-section .tipply {
+.reveal-section .discord {
 	transition: opacity 0.6s ease 0.8s, transform 0.6s ease 0.8s;
+}
+
+.reveal-section .tipply {
+	transition: opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s;
+}
+
+.reveal-section .email {
+	transition: opacity 0.6s ease 1s, transform 0.6s ease 1s;
 }
 
 .reveal-section .link-button {
