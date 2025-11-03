@@ -1,0 +1,33 @@
+{
+	"config": {
+		"title": {
+			"pl": "Najnowsze treści",
+			"en": "Latest content"
+		}
+	},
+	"miniatures": [
+		{
+			"id": "1",
+			"title": {
+				"pl": "KONIEC NEW WORLD",
+				"en": "END OF NEW WORLD"
+			},
+			"image": "images/miniatures/New_world.png",
+			"link": "https://www.youtube.com/watch?v=Iv12ariVd4w",
+			"platform": "youtube",
+			"active": true
+		},
+		{
+			"id": "2",
+			"title": {
+				"pl": "Kroniki Archolos",
+				"en": "Chronicles of Archolos"
+			},
+			"image": "images/miniatures/Kroniki_Myrtany.png",
+			"link": "https://www.facebook.com/share/16g2h3GWHy/",
+			"platform": "facebook",
+			"active": true
+		}
+	]
+}
+
