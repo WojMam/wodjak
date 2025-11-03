@@ -1,5 +1,6 @@
 // Importy
 import NotificationSystem from "./notifications/notifications.js";
+import MiniaturesSystem from "./miniatures/miniatures.js";
 
 // Tłumaczenia
 var translations = {
@@ -22,6 +23,7 @@ var translations = {
 		"support-tipply": "Wesprzyj mnie - Tipply",
 		facebook: "Facebook",
 		pixele: "Blog 'Wypalone Pixele'",
+		"miniatures-title": "Najnowsze treści",
 		tagline: "Poradniki i przewodniki do gier",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
@@ -43,6 +45,7 @@ var translations = {
 		"support-tipply": "Support Me - Tipply",
 		facebook: "Facebook",
 		pixele: "Blog 'Wypalone Pixele'",
+		"miniatures-title": "Latest content",
 		tagline: "Game tutorials and guides",
 		copyright: "WODJAK Gaming - All rights reserved",
 	},
@@ -64,6 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Obsługa przycisku powiadomień
 	setupNotificationsButton(notifications);
+
+	// Inicjalizacja systemu miniaturek
+	const miniatures = new MiniaturesSystem({
+		autoLoad: true, // Automatycznie załaduj miniatury z pliku miniatures.json
+	});
 
 	// Wysyłanie zdarzenia zmiany języka
 	document.addEventListener("languageChanged", function (e) {
