@@ -27,6 +27,17 @@
 			"link": "https://www.facebook.com/share/16g2h3GWHy/",
 			"platform": "facebook",
 			"active": true
+		},
+		{
+			"id": "3",
+			"title": {
+				"pl": "Gothic Reworked",
+				"en": "Gothic Reworked"
+			},
+			"image": "images/miniatures/Gothic_Reworked.png",
+			"link": "https://www.facebook.com/share/p/1GtFpDFeXf/",
+			"platform": "facebook",
+			"active": true
 		}
 	]
 }
