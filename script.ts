@@ -22,6 +22,8 @@ const translations: Translations = {
 		instagram: "Instagram",
 		email: "Contact Me",
 		support: "Support me - coming soon",
+		"miniatures-title": "Latest content",
+		"read-more": "Read more",
 		copyright: "WODJAK Gaming - All Rights Reserved",
 	},
 	pl: {
@@ -41,6 +43,8 @@ const translations: Translations = {
 		instagram: "Instagram",
 		email: "Napisz do mnie",
 		support: "Wesprzyj mnie - wkrótce",
+		"miniatures-title": "Najnowsze treści",
+		"read-more": "Czytaj więcej",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
 };
