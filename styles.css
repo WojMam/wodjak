@@ -470,21 +470,20 @@ section.miniatures h2 {
 	font-size: 1rem;
 	font-weight: 500;
 	font-family: "Montserrat", sans-serif;
-	cursor: not-allowed;
+	text-decoration: none;
+	cursor: pointer;
 	transition: all 0.3s ease, background-color var(--theme-transition) ease,
 		color var(--theme-transition) ease, border-color var(--theme-transition) ease;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 	text-align: center;
+	max-width: 250px;
 }
 
-.miniatures-read-more-btn:disabled {
-	opacity: 0.65;
-	cursor: not-allowed;
-}
-
-.miniatures-read-more-btn:disabled:hover {
-	transform: none;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.miniatures-read-more-btn:hover {
+	background-color: var(--primary-color);
+	color: #fff;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Light theme adjustments for read more button */
@@ -494,8 +493,236 @@ section.miniatures h2 {
 	border-color: var(--primary-color-light);
 }
 
-.light-theme .miniatures-read-more-btn:disabled {
-	opacity: 0.7;
+.light-theme .miniatures-read-more-btn:hover {
+	background-color: var(--primary-color-light);
+	color: #fff;
+}
+
+/* History Page Styles */
+.history-header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.back-button-container {
+	margin-bottom: 2rem;
+	text-align: left;
+}
+
+.back-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 1rem;
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	transition: all 0.3s ease, color var(--theme-transition) ease,
+		background-color var(--theme-transition) ease;
+	background-color: var(--secondary-color);
+	border: 2px solid var(--primary-color);
+}
+
+.back-button:hover {
+	background-color: var(--primary-color);
+	color: #fff;
+	transform: translateX(-5px);
+}
+
+.back-button i {
+	font-size: 0.9rem;
+}
+
+.history-title {
+	font-family: "Cinzel", serif;
+	font-weight: 900;
+	font-size: 3rem;
+	color: var(--primary-color);
+	margin-bottom: 0.5rem;
+	letter-spacing: 2px;
+	transition: color var(--theme-transition) ease;
+	-webkit-text-stroke: 2px var(--primary-color);
+	text-shadow: 0 0 2px var(--primary-color), 0 0 4px var(--primary-color),
+		2px 2px 5px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.history-miniatures {
+	background-color: transparent;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+}
+
+.history-miniatures-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.history-miniature-item {
+	display: block;
+	text-decoration: none;
+	border-radius: 12px;
+	overflow: hidden;
+	position: relative;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	background-color: var(--card-background);
+	border: 2px solid var(--primary-color);
+}
+
+.history-miniature-item:hover {
+	transform: translateY(-8px) scale(1.02);
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.history-miniature-image-wrapper {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%; /* 16:9 aspect ratio */
+	overflow: hidden;
+	background-color: var(--secondary-color);
+}
+
+.history-miniature-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.history-miniature-item:hover .history-miniature-image {
+	transform: scale(1.08);
+	filter: brightness(1.1);
+}
+
+.history-miniature-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.95) 0%,
+		rgba(0, 0, 0, 0.8) 50%,
+		transparent 100%
+	);
+	padding: 1.5rem;
+	opacity: 1;
+	transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.history-miniature-item:hover .history-miniature-overlay {
+	padding: 1.8rem;
+}
+
+.history-miniature-title {
+	color: var(--text-color);
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+	line-height: 1.4;
+	font-family: "Montserrat", sans-serif;
+}
+
+/* Platform icon for history page */
+.history-miniature-image-wrapper .miniature-platform-icon {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 50%;
+	padding: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	backdrop-filter: blur(4px);
+	transition: transform 0.3s ease, background-color 0.3s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.history-miniature-item:hover .history-miniature-image-wrapper .miniature-platform-icon {
+	transform: scale(1.1);
+	background-color: rgba(0, 0, 0, 0.85);
+}
+
+.history-miniature-image-wrapper .miniature-platform-icon-img {
+	width: 24px;
+	height: 24px;
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+}
+
+/* Light theme adjustments for history page */
+.light-theme .back-button {
+	background-color: var(--secondary-color-light);
+	color: #ffffff;
+	border-color: var(--primary-color-light);
+}
+
+.light-theme .back-button:hover {
+	background-color: var(--primary-color-light);
+	color: #fff;
+}
+
+.light-theme .history-title {
+	color: var(--primary-color-light);
+	-webkit-text-stroke: 2px var(--primary-color-light);
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.light-theme .history-miniature-item {
+	background-color: var(--card-background-light);
+	border-color: var(--primary-color-light);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.light-theme .history-miniature-item:hover {
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.light-theme .history-miniature-image-wrapper {
+	background-color: var(--secondary-color-light);
+}
+
+/* Platform-specific hover effects for history page */
+.history-miniature-item.miniature-youtube:hover {
+	border-color: rgba(196, 48, 43, 0.8);
+}
+
+.history-miniature-item.miniature-twitch:hover {
+	border-color: rgba(100, 65, 165, 0.8);
+}
+
+.history-miniature-item.miniature-facebook:hover {
+	border-color: rgba(24, 119, 242, 0.8);
+}
+
+/* Mobile responsive for history page */
+@media (max-width: 600px) {
+	.history-title {
+		font-size: 2.5rem;
+		-webkit-text-stroke: 1px var(--primary-color);
+		text-shadow: 0 0 1px var(--primary-color), 0 0 2px var(--primary-color),
+			1px 1px 3px rgba(0, 0, 0, 0.6);
+	}
+
+	.history-miniatures-container {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.back-button-container {
+		margin-bottom: 1.5rem;
+	}
 }
 
 /* Platform-specific hover effects */

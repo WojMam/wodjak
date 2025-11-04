@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WODJAK Gaming - Wszystkie treści</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notifications/notification-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="hamburger-menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-items">
+                <ul>
+                    <li><a href="index.html" data-lang="home">Strona główna</a></li>
+                    <li><a href="index.html#about" data-lang="about">O mnie</a></li>
+                    <li><a href="index.html#links" data-lang="links">Linki</a></li>
+                    <li><a href="miniatures.html" data-lang="all-content">Wszystkie treści</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="theme-controls">
+            <button id="notifications-toggle" class="notifications-toggle" aria-label="Pokaż powiadomienia"
+                title="Pokaż powiadomienia">
+                <i class="fas fa-bell"></i>
+                <span class="notifications-badge">0</span>
+            </button>
+            <div id="notifications-panel" class="notifications-panel">
+                <div class="notifications-panel-header">
+                    <h3 class="notifications-panel-title"><i class="fas fa-bell"></i> <span
+                            data-lang="notifications">Powiadomienia</span></h3>
+                    <div class="notifications-panel-actions">
+                        <button id="mark-all-read" class="notifications-panel-action" data-lang="mark-all-read">Oznacz
+                            wszystkie jako przeczytane</button>
+                    </div>
+                </div>
+                <div class="notifications-panel-content" id="notifications-panel-content">
+                    <!-- Tutaj będą dynamicznie generowane powiadomienia -->
+                </div>
+            </div>
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                <div class="theme-toggle-track">
+                    <span class="theme-icon"><i class="fas fa-moon"></i></span>
+                    <span class="theme-icon"><i class="fas fa-sun"></i></span>
+                </div>
+                <div class="theme-toggle-thumb"></div>
+            </div>
+            <div class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+                <div class="lang-toggle-track">
+                    <span class="lang-toggle-icon">PL</span>
+                    <span class="lang-toggle-icon">EN</span>
+                </div>
+                <div class="lang-toggle-thumb"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="history-header">
+            <div class="back-button-container">
+                <a href="index.html" class="back-button" data-lang="back-to-main">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-lang="back-to-main-text">Powrót do strony głównej</span>
+                </a>
+            </div>
+            <h1 class="reveal-section history-title" data-lang="all-content-title">Wszystkie treści</h1>
+            <p class="tagline reveal-section reveal-delay-1" data-lang="all-content-subtitle">Archiwum wszystkich
+                opublikowanych treści</p>
+        </header>
+
+        <section class="history-miniatures reveal-section" id="history-miniatures-section">
+            <div class="history-miniatures-container" id="history-miniatures-container">
+                <!-- Wszystkie miniatury będą tutaj dynamicznie dodawane -->
+            </div>
+        </section>
+
+        <footer class="reveal-section">
+            <p>© <span id="current-year"></span> <span data-lang="copyright">WODJAK Gaming - Wszelkie prawa
+                    zastrzeżone</span></p>
+        </footer>
+    </div>
+
+    <script type="module" src="miniatures-history.js"></script>
+</body>
+
+</html>
+

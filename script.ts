@@ -24,6 +24,11 @@ const translations: Translations = {
 		support: "Support me - coming soon",
 		"miniatures-title": "Latest content",
 		"read-more": "Read more",
+		"all-content": "All content",
+		"all-content-title": "All content",
+		"all-content-subtitle": "Archive of all published content",
+		"back-to-main": "Back",
+		"back-to-main-text": "Back to main page",
 		copyright: "WODJAK Gaming - All Rights Reserved",
 	},
 	pl: {
@@ -45,6 +50,11 @@ const translations: Translations = {
 		support: "Wesprzyj mnie - wkrótce",
 		"miniatures-title": "Najnowsze treści",
 		"read-more": "Czytaj więcej",
+		"all-content": "Wszystkie treści",
+		"all-content-title": "Wszystkie treści",
+		"all-content-subtitle": "Archiwum wszystkich opublikowanych treści",
+		"back-to-main": "Powrót",
+		"back-to-main-text": "Powrót do strony głównej",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
 };

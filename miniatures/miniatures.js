@@ -83,10 +83,10 @@ class MiniaturesSystem {
 		// Wyczyść zawartość kontenera
 		this.container.innerHTML = "";
 
-		// Filtruj tylko aktywne miniatury
-		const activeMiniatures = this.miniaturesData.filter(
-			m => m.active !== false
-		);
+		// Filtruj tylko aktywne miniatury i ogranicz do maksymalnie 3
+		const activeMiniatures = this.miniaturesData
+			.filter(m => m.active !== false)
+			.slice(0, 3); // Maksymalnie 3 miniatury na stronie głównej
 
 		if (activeMiniatures.length === 0) {
 			const emptyMessage = document.createElement("div");
