@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WODJAK Gaming - Official Links</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="notifications/notification-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -31,33 +29,9 @@
                 </ul>
             </div>
         </div>
-        <div class="theme-controls">
-            <button id="notifications-toggle" class="notifications-toggle" aria-label="Pokaż powiadomienia"
-                title="Pokaż powiadomienia">
-                <i class="fas fa-bell"></i>
-                <span class="notifications-badge">0</span>
-            </button>
-            <div id="notifications-panel" class="notifications-panel">
-                <div class="notifications-panel-header">
-                    <h3 class="notifications-panel-title"><i class="fas fa-bell"></i> <span
-                            data-lang="notifications">Powiadomienia</span></h3>
-                    <div class="notifications-panel-actions">
-                        <button id="mark-all-read" class="notifications-panel-action" data-lang="mark-all-read">Oznacz
-                            wszystkie jako przeczytane</button>
-                    </div>
-                </div>
-                <div class="notifications-panel-content" id="notifications-panel-content">
-                    <!-- Tutaj będą dynamicznie generowane powiadomienia -->
-                </div>
-            </div>
-            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-                <div class="theme-toggle-track">
-                    <span class="theme-icon"><i class="fas fa-moon"></i></span>
-                    <span class="theme-icon"><i class="fas fa-sun"></i></span>
-                </div>
-                <div class="theme-toggle-thumb"></div>
-            </div>
-            <div class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+        <div class="nav-controls">
+            <div class="lang-toggle" id="lang-toggle" role="switch" aria-checked="false"
+                aria-label="Przełącz język strony: polski lub angielski">
                 <div class="lang-toggle-track">
                     <span class="lang-toggle-icon">PL</span>
                     <span class="lang-toggle-icon">EN</span>
@@ -150,15 +124,6 @@
                     <span data-lang="email">Email</span>
                 </a>
             </section>
-
-            <section class="miniatures reveal-section" id="miniatures-section">
-                <h2 data-lang="miniatures-title">Najnowsze treści</h2>
-                <div class="miniatures-container" id="miniatures-container">
-                    <!-- Miniatury będą tutaj dynamicznie dodawane -->
-                </div>
-                <a href="miniatures.html" class="miniatures-read-more-btn" data-lang="read-more">Czytaj
-                    więcej</a>
-            </section>
         </div>
 
         <footer class="reveal-section">
@@ -167,7 +132,7 @@
         </footer>
     </div>
 
-    <script type="module" src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

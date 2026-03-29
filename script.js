@@ -1,9 +1,9 @@
-// Importy
-import NotificationSystem from "./notifications/notifications.js";
-import MiniaturesSystem from "./miniatures/miniatures.js";
+/**
+ * WODJAK — strona główna: język PL/EN, navbar przy scrollu, animacje reveal, flip avatara.
+ * Stały motyw ciemny (bez przełącznika).
+ */
 
-// Tłumaczenia
-var translations = {
+const translations = {
 	pl: {
 		home: "Strona główna",
 		about: "O mnie",
@@ -23,13 +23,6 @@ var translations = {
 		"support-tipply": "Wesprzyj mnie - Tipply",
 		facebook: "Facebook",
 		pixele: "Blog 'Wypalone Pixele'",
-		"miniatures-title": "Najnowsze treści",
-		"read-more": "Czytaj więcej",
-		"all-content": "Wszystkie treści",
-		"all-content-title": "Wszystkie treści",
-		"all-content-subtitle": "Archiwum wszystkich opublikowanych treści",
-		"back-to-main": "Powrót",
-		"back-to-main-text": "Powrót do strony głównej",
 		tagline: "Poradniki i przewodniki do gier",
 		copyright: "WODJAK Gaming - Wszelkie prawa zastrzeżone",
 	},
@@ -51,63 +44,33 @@ var translations = {
 		"support-tipply": "Support Me - Tipply",
 		facebook: "Facebook",
 		pixele: "Blog 'Wypalone Pixele'",
-		"miniatures-title": "Latest content",
-		"read-more": "Read more",
-		"all-content": "All content",
-		"all-content-title": "All content",
-		"all-content-subtitle": "Archive of all published content",
-		"back-to-main": "Back",
-		"back-to-main-text": "Back to main page",
 		tagline: "Game tutorials and guides",
 		copyright: "WODJAK Gaming - All rights reserved",
 	},
 };
 
-// Current language
-var currentLang = "pl";
-// Set current year in footer
-document.addEventListener("DOMContentLoaded", function () {
-	var yearElement = document.getElementById("current-year");
-	if (yearElement) {
-		yearElement.textContent = new Date().getFullYear().toString();
+let currentLang = "pl";
+
+document.addEventListener("DOMContentLoaded", () => {
+	const yearEl = document.getElementById("current-year");
+	if (yearEl) {
+		yearEl.textContent = String(new Date().getFullYear());
 	}
 
-	// Inicjalizacja systemu powiadomień
-	const notifications = new NotificationSystem({
-		autoLoad: true, // Automatycznie załaduj powiadomienia z pliku notifications.json
-	});
+	setupProfileFlip();
+	applyLanguage(currentLang);
+	setupLanguageSwitcher();
+	setupNavbarScroll();
+	setupScrollReveal();
+});
 
-	// Obsługa przycisku powiadomień
-	setupNotificationsButton(notifications);
+function setupProfileFlip() {
+	const profileFlip = document.getElementById("profile-flip");
+	const profileBack = document.querySelector(".profile-back img");
+	const profileFront = document.querySelector(".profile-front img");
+	if (!profileFlip || !profileBack || !profileFront) return;
 
-	// Inicjalizacja systemu miniaturek
-	const miniatures = new MiniaturesSystem({
-		autoLoad: true, // Automatycznie załaduj miniatury z pliku miniatures.json
-	});
-
-	// Wysyłanie zdarzenia zmiany języka
-	document.addEventListener("languageChanged", function (e) {
-		// Tu dodaj obsługę innych elementów, które reagują na zmianę języka
-	});
-
-	// Add hover effect to links
-	var linkButtons = document.querySelectorAll(".link-button");
-	linkButtons.forEach(function (button) {
-		button.addEventListener("mouseenter", function () {
-			button.classList.add("hover-effect");
-		});
-		button.addEventListener("mouseleave", function () {
-			button.classList.remove("hover-effect");
-		});
-	});
-	// Setup profile flip animation with random images
-	var profileFlip = document.getElementById("profile-flip");
-	var profileBack = document.querySelector(".profile-back img");
-	var profileFront = document.querySelector(".profile-front img");
-	var isFlipped = false;
-
-	// List of available profile images
-	var profileImages = [
+	const profileImages = [
 		"images/profiles/profile_main.jpg",
 		"images/profiles/profile_ac.png",
 		"images/profiles/profile_cp.png",
@@ -120,274 +83,134 @@ document.addEventListener("DOMContentLoaded", function () {
 		"images/profiles/profile_ww.png",
 	];
 
-	// Function to get a random profile image that's different from the current one
-	function getRandomProfile(currentSrc) {
-		var currentImage = currentSrc.split("/").pop();
-		var availableImages = profileImages.filter(function (img) {
-			return img.split("/").pop() !== currentImage;
-		});
+	const randomOtherThan = currentSrc => {
+		const currentFile = currentSrc.split("/").pop();
+		const pool = profileImages.filter(img => img.split("/").pop() !== currentFile);
+		return pool[Math.floor(Math.random() * pool.length)];
+	};
 
-		var randomIndex = Math.floor(Math.random() * availableImages.length);
-		return availableImages[randomIndex];
-	}
+	profileBack.src = randomOtherThan(profileFront.src);
+	let flipped = false;
 
-	if (profileFlip && profileBack && profileFront) {
-		// Set a random image to back side initially
-		profileBack.src = getRandomProfile(profileFront.src);
-
-		profileFlip.addEventListener("click", function () {
-			profileFlip.classList.toggle("flip");
-			isFlipped = !isFlipped;
-
-			// After the flip animation starts, set up the next image for the side that will be hidden
-			setTimeout(function () {
-				if (isFlipped) {
-					// If flipped to back, prepare a new random image for the front
-					profileFront.src = getRandomProfile(profileBack.src);
-				} else {
-					// If flipped to back, prepare a new random image for the back
-					profileBack.src = getRandomProfile(profileFront.src);
-				}
-			}, 400); // Wait for the flip to be halfway through
-		});
-	}
-	// Set default language
-	setActiveLanguage(currentLang);
-	// Setup language switcher
-	setupLanguageSwitcher();
-	// Setup navbar scroll behavior
-	setupNavbarScroll();
-	// Setup scroll reveal animations
-	setupScrollReveal();
-	// Setup theme toggle
-	setupThemeToggle();
-});
-// Function to add active state to buttons when clicked
-function addActiveState(element) {
-	element.classList.add("active");
-	setTimeout(function () {
-		element.classList.remove("active");
-	}, 200);
+	profileFlip.addEventListener("click", () => {
+		profileFlip.classList.toggle("flip");
+		flipped = !flipped;
+		window.setTimeout(() => {
+			if (flipped) {
+				profileFront.src = randomOtherThan(profileBack.src);
+			} else {
+				profileBack.src = randomOtherThan(profileFront.src);
+			}
+		}, 400);
+	});
 }
-// Implement click tracking (you can expand this later)
-function trackClick(platform) {
-	console.log("User clicked on ".concat(platform, " link"));
-	// You could implement actual tracking here in the future
-}
-// Set up language switcher functionality
+
 function setupLanguageSwitcher() {
-	var langToggle = document.getElementById("lang-toggle");
-	// Update toggle position based on current language
-	updateLangToggleState();
-	// Toggle language when clicked
-	langToggle === null || langToggle === void 0
-		? void 0
-		: langToggle.addEventListener("click", function () {
-				// Toggle between 'pl' and 'en'
-				var newLang = currentLang === "pl" ? "en" : "pl";
-				changeLanguage(newLang);
-				// Update toggle state
-				updateLangToggleState();
-		  });
+	const langToggle = document.getElementById("lang-toggle");
+	if (!langToggle) return;
+
+	syncLangToggleUi();
+
+	langToggle.addEventListener("click", () => {
+		currentLang = currentLang === "pl" ? "en" : "pl";
+		applyLanguage(currentLang);
+		syncLangToggleUi();
+	});
 }
-// Function to update language toggle state
-function updateLangToggleState() {
+
+function syncLangToggleUi() {
 	if (currentLang === "en") {
 		document.body.classList.add("lang-en");
 	} else {
 		document.body.classList.remove("lang-en");
 	}
+
+	const toggle = document.getElementById("lang-toggle");
+	toggle?.setAttribute("aria-checked", currentLang === "en" ? "true" : "false");
 }
-// Change language on the page
-function changeLanguage(lang) {
+
+function applyLanguage(lang) {
 	if (!translations[lang]) return;
+
 	currentLang = lang;
-	// Update HTML lang attribute
 	document.documentElement.setAttribute("lang", lang);
-	// Get all elements with data-lang attribute
-	var elementsWithLang = document.querySelectorAll("[data-lang]");
-	// First, fade out all elements
-	elementsWithLang.forEach(function (element) {
-		element.classList.add("lang-fade-out");
-	});
-	// After fade out animation completes, update content and fade in
-	setTimeout(function () {
-		elementsWithLang.forEach(function (element) {
-			var key = element.getAttribute("data-lang");
+
+	const nodes = document.querySelectorAll("[data-lang]");
+	nodes.forEach(el => el.classList.add("lang-fade-out"));
+
+	window.setTimeout(() => {
+		nodes.forEach(el => {
+			const key = el.getAttribute("data-lang");
 			if (key && translations[lang][key]) {
-				element.textContent = translations[lang][key];
+				el.textContent = translations[lang][key];
 			}
-			// Remove fade out class and add fade in animation
-			element.classList.remove("lang-fade-out");
-			element.classList.add("lang-fade-in");
-			// Remove the animation class after it completes
-			setTimeout(function () {
-				element.classList.remove("lang-fade-in");
-			}, 500);
+			el.classList.remove("lang-fade-out");
+			el.classList.add("lang-fade-in");
+			window.setTimeout(() => el.classList.remove("lang-fade-in"), 500);
 		});
 	}, 300);
 }
-// Set active language on page load
-function setActiveLanguage(lang) {
-	var langBtn = document.querySelector(
-		'.lang-btn[data-lang="'.concat(lang, '"]')
-	);
-	if (langBtn) {
-		langBtn.classList.add("active");
-	}
-	changeLanguage(lang);
-}
-// Handle navbar visibility on scroll
+
 function setupNavbarScroll() {
-	var navbar = document.querySelector(".navbar");
-	var lastScrollY = window.scrollY;
-	window.addEventListener("scroll", function () {
-		// Don't hide navbar on mobile devices
+	const navbar = document.querySelector(".navbar");
+	if (!navbar) return;
+
+	let lastY = window.scrollY;
+
+	window.addEventListener("scroll", () => {
 		if (window.innerWidth <= 600) {
-			navbar === null || navbar === void 0
-				? void 0
-				: navbar.classList.remove("hidden");
+			navbar.classList.remove("hidden");
 			return;
 		}
-		if (lastScrollY < window.scrollY) {
-			// Scrolling down
-			navbar === null || navbar === void 0
-				? void 0
-				: navbar.classList.add("hidden");
+		if (lastY < window.scrollY) {
+			navbar.classList.add("hidden");
 		} else {
-			// Scrolling up
-			navbar === null || navbar === void 0
-				? void 0
-				: navbar.classList.remove("hidden");
+			navbar.classList.remove("hidden");
 		}
-		lastScrollY = window.scrollY;
+		lastY = window.scrollY;
 	});
-	// Also check on resize to handle orientation changes
-	window.addEventListener("resize", function () {
+
+	window.addEventListener("resize", () => {
 		if (window.innerWidth <= 600) {
-			navbar === null || navbar === void 0
-				? void 0
-				: navbar.classList.remove("hidden");
+			navbar.classList.remove("hidden");
 		}
 	});
 }
-// Setup scroll reveal animations using Intersection Observer
+
 function setupScrollReveal() {
-	// Immediately activate the profile image animation
-	setTimeout(function () {
-		var profileContainer = document.querySelector(".profile-container");
-		profileContainer === null || profileContainer === void 0
-			? void 0
-			: profileContainer.classList.add("active");
+	window.setTimeout(() => {
+		document.querySelector(".profile-container")?.classList.add("active");
 	}, 300);
-	// Set up scroll animations for other elements
-	var observerOptions = {
-		root: null, // Use viewport as root
-		rootMargin: "0px",
-		threshold: [0.1, 0.5], // Trigger at different visibility thresholds
-	};
-	var observer = new IntersectionObserver(function (entries) {
-		entries.forEach(function (entry) {
-			if (entry.isIntersecting) {
-				// Element is entering the viewport
-				entry.target.classList.add("active");
-				entry.target.classList.remove("disappear");
-			} else {
-				// Element is leaving the viewport
-				// Only add disappear if it was active before
-				if (entry.target.classList.contains("active")) {
-					entry.target.classList.add("disappear");
-				}
-			}
-		});
-	}, observerOptions);
-	// Observe all elements with reveal-section class
-	var revealElements = document.querySelectorAll(".reveal-section");
-	revealElements.forEach(function (element) {
-		observer.observe(element);
-	});
-	// Special handling for profile container
-	var profileObserver = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (entry) {
+
+	const revealObserver = new IntersectionObserver(
+		entries => {
+			entries.forEach(entry => {
 				if (entry.isIntersecting) {
+					entry.target.classList.add("active");
 					entry.target.classList.remove("disappear");
-				} else {
-					if (window.scrollY > 100) {
-						// Only apply disappear when scrolled down
-						entry.target.classList.add("disappear");
-					}
+				} else if (entry.target.classList.contains("active")) {
+					entry.target.classList.add("disappear");
 				}
 			});
 		},
-		{
-			root: null,
-			rootMargin: "-10% 0px -10% 0px", // Smaller margin for profile
-			threshold: 0.3,
-		}
+		{ root: null, rootMargin: "0px", threshold: [0.1, 0.5] }
 	);
-	var profileContainer = document.querySelector(".profile-container");
-	if (profileContainer) {
-		profileObserver.observe(profileContainer);
-	}
-}
-// Set up theme toggle functionality
-function setupThemeToggle() {
-	var themeToggle = document.getElementById("theme-toggle");
-	var prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-	// Check for saved theme preference or use the OS preference
-	var savedTheme = localStorage.getItem("theme");
-	if (savedTheme === "light") {
-		document.body.classList.add("light-theme");
-	} else if (savedTheme === null && !prefersDarkScheme.matches) {
-		// If no saved preference and OS prefers light mode
-		document.body.classList.add("light-theme");
-	}
-	// Update toggle position based on current theme
-	updateToggleState();
-	// Toggle theme when clicked
-	themeToggle === null || themeToggle === void 0
-		? void 0
-		: themeToggle.addEventListener("click", function () {
-				document.body.classList.toggle("light-theme");
-				// Store preference
-				if (document.body.classList.contains("light-theme")) {
-					localStorage.setItem("theme", "light");
-				} else {
-					localStorage.setItem("theme", "dark");
+
+	document.querySelectorAll(".reveal-section").forEach(el => revealObserver.observe(el));
+
+	const profileObserver = new IntersectionObserver(
+		entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.remove("disappear");
+				} else if (window.scrollY > 100) {
+					entry.target.classList.add("disappear");
 				}
-				// Update toggle state
-				updateToggleState();
-		  });
-	// Update toggle state based on theme
-	function updateToggleState() {
-		var isLightTheme = document.body.classList.contains("light-theme");
-		// Optional: Update any ARIA attributes for accessibility
-		themeToggle === null || themeToggle === void 0
-			? void 0
-			: themeToggle.setAttribute("aria-checked", isLightTheme.toString());
-	}
-}
+			});
+		},
+		{ root: null, rootMargin: "-10% 0px -10% 0px", threshold: 0.3 }
+	);
 
-// Obsługa przycisku powiadomień
-function setupNotificationsButton(notifications) {
-	const notificationsButton = document.getElementById("notifications-toggle");
-	const notificationsBadge = document.querySelector(".notifications-badge");
-
-	if (!notificationsButton) return;
-
-	// Aktualizuj licznik powiadomień przy inicjalizacji i po zamknięciu powiadomienia
-	setTimeout(() => {
-		notifications.updateNotificationsBadge();
-	}, 1000);
-
-	// Nasłuchuj zdarzeń zamknięcia powiadomień
-	document.addEventListener("notificationClosed", function () {
-		notifications.updateNotificationsBadge();
-	});
-
-	// Nasłuchuj zdarzeń oznaczenia wszystkich powiadomień jako przeczytane
-	document.addEventListener("notificationsAllClosed", function () {
-		notifications.updateNotificationsBadge();
-	});
+	const profile = document.querySelector(".profile-container");
+	if (profile) profileObserver.observe(profile);
 }
