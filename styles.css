@@ -31,6 +31,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	background-color: var(--background-color);
+}
+
 /* === Base === */
 body {
 	font-family: "Montserrat", sans-serif;
@@ -616,9 +620,17 @@ footer {
 		height: 234px;
 	}
 
+	/* Sticky = navbar w przepływie — bez padding-top na body (inaczej powstaje pusty pas / „drugi pasek” przy overscroll) */
+	body {
+		padding-top: 0;
+		background-attachment: scroll; /* fixed + iOS overscroll potrafi dawać artefakty */
+	}
+
 	.navbar {
 		padding: 0 1rem;
-		position: sticky; /* Always visible on mobile */
+		position: sticky;
+		top: 0;
+		z-index: 1000;
 	}
 
 	/* Prevent navbar from hiding on mobile */
